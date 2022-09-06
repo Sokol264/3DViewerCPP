@@ -13,15 +13,15 @@ public:
     void ReadModel(std::string filename);
     QVector<VertexData> GetVertices();
 private:
-    void ReadPoint3DFromString(QVector<QVector3D> &vector, std::string line);
-    void ReadPoint2DFromString(QVector<QVector2D> &vector, std::string line);
+    void ReadPoint3DFromString(QVector<QVector3D> &vector, std::string &line);
+    void ReadPoint2DFromString(QVector<QVector2D> &vector, std::string &line);
 
     template <typename T>
-    void ReadAndCopyPointByIndex(T &point, QVector<T> vector, std::string line, size_t &iterator);
-    void TurnPolygonsIntoTriangles(QVector<VertexData> face);
-    void ReadFacesFromString(std::string line);
+    void ReadAndCopyPointByIndex(T &point, QVector<T> &vector, std::string &line, size_t &iterator);
+    void TurnPolygonsIntoTriangles(QVector<VertexData> &face);
+    void ReadFacesFromString(std::string &line);
     void ClearTempVertexData();
-    void ReadFacesFromString(std::string line, int queue, size_t index);
+    void ReadFacesFromString(std::string &line, int queue, size_t index);
 
     QVector<VertexData> vertices;
 

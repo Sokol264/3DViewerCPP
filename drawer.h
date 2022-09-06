@@ -7,6 +7,7 @@
 #include <QOpenGLTexture>
 #include <QOpenGLBuffer>
 #include <QMouseEvent>
+#include <QWheelEvent>
 
 #include "vertex.h"
 #include "figure.h"
@@ -21,6 +22,7 @@ public:
     void paintGL();
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void wheelEvent(QWheelEvent *event);
     void setFigure(Figure figure);
 
 protected:
@@ -32,6 +34,7 @@ private:
     QOpenGLShaderProgram program;
     QVector2D mousePosition;
     QQuaternion rotation;
+    double scale = 1;
 };
 
 #endif // DRAWER_H

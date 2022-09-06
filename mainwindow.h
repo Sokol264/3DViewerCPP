@@ -19,7 +19,6 @@ public:
 
 private slots:
     void on_openModelFile_clicked();
-
     void on_openTextureFile_clicked();
 
 private:

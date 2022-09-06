@@ -24,7 +24,7 @@ void Drawer::paintGL() {
     viewMatrix.setToIdentity();
     viewMatrix.translate(0.0, -1.0, -5.0);
     viewMatrix.rotate(rotation);
-    viewMatrix.scale(2);
+    viewMatrix.scale(scale);
 
     auto texture = figure.getTexture();
     if (texture)
@@ -81,8 +81,20 @@ void Drawer::mouseMoveEvent(QMouseEvent *event) {
     update();
 }
 
+void Drawer::wheelEvent(QWheelEvent *event) {
+     QPoint numDegrees = event->angleDelta();
+     if (numDegrees.y() > 0) {
+         scale /= 2;
+     } else {
+         scale *= 2;
+     }
+     update();
+     qDebug() << scale;
+}
+
 void Drawer::setFigure(Figure figure) {
     auto vert = figure.getVertices();
+    qDebug() << vert.size();
     figure.ConfigBuffer();
     this->figure = figure;
     update();

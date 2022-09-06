@@ -20,9 +20,11 @@ MainWindow::~MainWindow() {
 void MainWindow::on_openModelFile_clicked() {
     auto filename = QFileDialog::getOpenFileName(this, tr("Open Object file"),
                                                "/", tr("OBJ (*.obj)"));
-    ReadObjectFileCommand command(controller);
-    command.SetFilename(filename.toStdString());
-    command.Execute();
+    if (!filename.isEmpty()) {
+        ReadObjectFileCommand command(controller);
+        command.SetFilename(filename.toStdString());
+        command.Execute();
+    }
 }
 
 
@@ -30,8 +32,10 @@ void MainWindow::on_openTextureFile_clicked()
 {
     auto filename = QFileDialog::getOpenFileName(this, tr("Open Texture file"),
                                                "/", tr("Image (*.png *.jpeg *.jpg *.bmp)"));
-    ReadTextureFileCommand command(controller);
-    command.SetFilename(filename.toStdString());
-    command.Execute();
+    if (!filename.isEmpty()) {
+        ReadTextureFileCommand command(controller);
+        command.SetFilename(filename.toStdString());
+        command.Execute();
+    }
 }
 
